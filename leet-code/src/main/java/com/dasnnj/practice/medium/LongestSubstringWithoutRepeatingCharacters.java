@@ -65,7 +65,33 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
         return max;*/
 
-        //Two
+        if ("".equals(s)) {
+            return 0;
+        }
+        char[] chars = s.toCharArray();
+        //j k,用于Two方法的两个指针---后面发现直接用for循环即可
+        int j = 0, k = 0, max = 0;
+        Integer ele;
+        Map<Character, Integer> sets = new HashMap<>(16);
+
+        //Three
+        for (int m = 0; m < chars.length; m++) {
+            //如果发生重复
+            if ((ele = sets.get(chars[m])) != null) {
+                // j指针指向两个重复字符中的第一个的下一位置，j指针不能后退，只能前进，所以下面有个判断
+                if (j < ele + 1) {
+                    j = ele + 1;
+                }
+            }
+            //不重复则是正常put，重复情况1.将j指针指向原字符的下一位2.用新字符替换掉map中原字符（主要是为了替换map中key为此字符 的value值也就是索引）
+            sets.put(chars[m], m);
+            //每次循环保持max最大
+            if (max < m - j) {
+                max = m - j;
+            }
+        }
+
+        //Two  原理同Three
         /*while (j < chars.length && k < chars.length) {
             if ((ele = sets.get(chars[k])) != null) {
                 if (j < ele + 1) {
@@ -79,26 +105,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 max = k - j;
             }
         }*/
-        //Three
-        if ("".equals(s)) {
-            return 0;
-        }
-        char[] chars = s.toCharArray();
-        int j = 0, k = 0, max = 0;
-        Integer ele;
-        Map<Character, Integer> sets = new HashMap<>(16);
-        for (int m = 0; m < chars.length; m++) {
-            if ((ele = sets.get(chars[m])) != null) {
-                if (j < ele + 1) {
-                    j = ele + 1;
-                }
-            }
-            sets.put(chars[m], m);
-
-            if (max < m - j) {
-                max = m - j;
-            }
-        }
         return max + 1;
     }
 }
