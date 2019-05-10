@@ -42,7 +42,7 @@ public class TwoAdd {
             n = m / 10;
             if (n > 0) {
                 l.val = m % 10;
-                //此步为了最后一个位置的两个数字加了之后需要进位
+                //此步只为了最后一个位置的两个数字加了之后需要进位
                 l.next = new ListNode(n);
                 //                l3.next.val = n;
             } else {
