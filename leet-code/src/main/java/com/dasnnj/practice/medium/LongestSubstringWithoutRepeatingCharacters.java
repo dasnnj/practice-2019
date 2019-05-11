@@ -50,8 +50,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 i = index;
                 //长度归零
                 len = 0;
-                //将map中第一个重复的 去掉  -- 关键所在。不去掉的话再怎么回退每次走到backpoint都会再次发生重复
-//                map.remove(chars[i]);
+                //将map清空，从重复位置的下一位置重新计算 -- 清空是因为第一个重复的在上面提到是相当于舍弃，不清空的话会影响下次循环的判断
                 map.clear();
             } else {
                 //没重复当然正常put  正常++
