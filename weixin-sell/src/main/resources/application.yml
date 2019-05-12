@@ -1,0 +1,8 @@
+# 日志  注释掉使用xml文件
+#logging:
+#  pattern:
+#    console: "%d - %msg %n"
+#
+#  file: log/sell.log
+#  level:
+#    com.dasnnj.practice.weixinsell.log.LogTest: debug
