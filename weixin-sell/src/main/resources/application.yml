@@ -8,9 +8,12 @@
 #    com.dasnnj.practice.weixinsell.log.LogTest: debug
 
 spring:
+  output:
+    ansi:
+      enabled: ALWAYS
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: zzj
+    username: root
     password: 123456
     # GMT%2B8  GMT+8
     url: jdbc:mysql://localhost:3306/weixin-sell?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
