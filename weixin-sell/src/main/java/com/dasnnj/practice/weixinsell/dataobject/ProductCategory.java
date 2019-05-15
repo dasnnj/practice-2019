@@ -3,6 +3,7 @@ package com.dasnnj.practice.weixinsell.dataobject;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ import java.util.Date;
 @Setter
 @ToString
 @DynamicUpdate
+@DynamicInsert
 public class ProductCategory {
     /**
      * The Category id.

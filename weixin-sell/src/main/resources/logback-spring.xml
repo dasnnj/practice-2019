@@ -18,8 +18,12 @@
   <!--  info信息日志到文件-->
   <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.LevelFilter">
-      <level>INFO</level>
-      <onMismatch>DENY</onMismatch>
+      <!--<level>INFO</level>
+&lt;!&ndash;      不是info信息都不打印到文本上&ndash;&gt;
+      <onMismatch>DENY</onMismatch>-->
+<!--      不是error信息就都打印到文本-->
+      <level>ERROR</level>
+      <onMatch>DENY</onMatch>
     </filter>
     <encoder>
       <pattern>
@@ -55,7 +59,7 @@
   </appender>
 
 <!--  <logger name="com.dasnnj.practice.weixinsell.log.LogTest" level="ERROR"/>-->
-  <root level="info">
+  <root level="INFO">
     <appender-ref ref="consoleLog"/>
     <appender-ref ref="fileInfoLog"/>
     <appender-ref ref="fileErrorLog"/>
