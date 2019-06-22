@@ -4,6 +4,7 @@ import com.dasnnj.practice.weixinsell.dataobject.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Description <P> DO : 商品类目DAO接口 <P>
@@ -21,5 +22,5 @@ public interface ProductCategoryRepository extends JpaRepository<ProductCategory
      * @author dasnnj
      * @date 2019 -05-15 09:24
      */
-    List<ProductCategory> getProductCategoriesByCategoryTypeIn(List<Integer> types);
+    List<ProductCategory> getProductCategoriesByCategoryTypeIn(Set<Integer> types);
 }

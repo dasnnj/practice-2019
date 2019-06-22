@@ -1,6 +1,7 @@
 package com.dasnnj.practice.weixinsell.repository;
 
 import com.dasnnj.practice.weixinsell.dataobject.ProductCategory;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Description <P> DO :  商品类目接口测试<P>
@@ -21,10 +23,10 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class ProductCategoryRepositoryTest {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
-
     @Test
     public void findOneTest() {
         //https://stackoverflow.com/questions/4423026/about-error-using-java-generics-type-parameter-s-is-not-within-its-bound
@@ -85,8 +87,17 @@ public class ProductCategoryRepositoryTest {
 
     @Test
     public void getProductCategoriesByCategoryTypeInTest() {
-        List<Integer> l = Arrays.asList(1, 2, 3, 4);
-        List res = productCategoryRepository.getProductCategoriesByCategoryTypeIn(l);
+        Set<Integer> s = new HashSet<>();
+        s.add(1);
+        s.add(2);
+        s.add(3);
+        List res = productCategoryRepository.getProductCategoriesByCategoryTypeIn(s);
         Assert.assertTrue(res.size() > 0);
+    }
+
+    @Test
+    public void findAllTest(){
+        List res = productCategoryRepository.findAll();
+        log.info(res.toString());
     }
 }
